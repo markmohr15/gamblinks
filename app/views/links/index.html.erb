@@ -1,7 +1,11 @@
 <h1> Cool Links for Gambling </h1>
 
 <% @links.each do |link| %>
-Likes: <%= link.votes_count %>
+<% if link.votes_count == 1 %>
+1 Like
+<% else %>
+<%= link.votes_count %> Likes
+<% end %>
 <a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <%=link.user.username %>
 <%= time_ago_in_words(link.created_at) %> ago)
 with <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>

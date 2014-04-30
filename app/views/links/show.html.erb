@@ -1,5 +1,8 @@
-<a href="http://<%=@link.address%>"> <%= @link.title %> </a> submitted by <%=@link.user.username %>
-<%= time_ago_in_words(@link.created_at) %> ago
+<%= @link.votes_count %> Likes
+<a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <%=@link.user.username %>
+<%= time_ago_in_words(@link.created_at) %> ago)
+with <a href="/links/<%=@link.id%>"> <%= @link.comments.count %> Comments </a>
+<a <%= image_tag("thumb.jpg", size: "30") %>
 <br/>
 
 <% @link.comments.each do |comment| %>
