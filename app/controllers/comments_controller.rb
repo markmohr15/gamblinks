@@ -9,6 +9,9 @@ def create
     end
   end
 
+  def show
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
 
