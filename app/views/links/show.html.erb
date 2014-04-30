@@ -16,12 +16,13 @@
 
   <%= link_to "Delete", comment, :confirm => 'Are you sure?', :method => :delete %>
   <% end %>
+  <br/>
   <% end %>
 
 
 <% if current_user %>
 <%= form_for @link.comments.build do |f| %>
-<%= f.text_field :body %>
+<%= f.text_field :body, :required => true %>
 <%= f.hidden_field :link_id, value: @link.id %>
 <br/>
 <%= f.submit %>
