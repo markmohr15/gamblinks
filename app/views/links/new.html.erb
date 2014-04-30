@@ -1,0 +1,11 @@
+<h1> Submit a cool Gambling Link </h1>
+
+<%= form_for @link, url: links_path do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br/>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<br/>
+<%= f.submit %>
+<% end %>
