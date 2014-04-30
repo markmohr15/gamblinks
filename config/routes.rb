@@ -2,7 +2,9 @@ CoolLinks::Application.routes.draw do
   devise_for :users
   root to: "links#index"
 
-  resources :links
-  resources :comments
-  resources :votes
+  resources :links do
+    resources :comments
+    resources :votes
+  end
+
 end

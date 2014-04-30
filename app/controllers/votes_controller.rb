@@ -1,8 +1,9 @@
 class VotesController < ApplicationController
   def create
+    @link = Link.find(params[:link_id])
     @vote = Vote.new
     @vote.user_id = current_user.id
-    @vote.link_id =
+    @vote.link_id = @link.id
     if @vote.save
       redirect_to :back
     else
@@ -16,5 +17,5 @@ private
   #  params.require(:link).permit(:title, :address)
   #end
 
-
 end
+

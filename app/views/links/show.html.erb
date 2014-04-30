@@ -16,18 +16,25 @@ with <a href="/links/<%=@link.id%>"> <%= @link.comments.count %> Comments </a>
     <%= time_ago_in_words(comment.created_at) %> ago)
 <% if comment.user_id != current_user.id %>
 <% else %>
-
-  <%= link_to "Delete", comment, :method => :delete %>
+<%= link_to "Delete", link_comment_path(comment.link, comment), :method => :delete %>
   <% end %>
   <br/>
   <% end %>
 
 
 <% if current_user %>
-<%= form_for @link.comments.build do |f| %>
+<%= form_for [@link, Comment.new] do |f| %>
 <%= f.text_field :body, :required => true %>
-<%= f.hidden_field :link_id, value: @link.id %>
 <br/>
-<%= f.submit %>
+
+<%= f.submit "Comment"%>
+<% end %>
+<% end %>
+<% if event.has_voted?(@current_user) %>
+<% else %>
+<% if current_user %>
+<%= form_for [@link, Vote.new] do |f| %>
+<%= f.submit "Vote" %>
+<% end %>
 <% end %>
 <% end %>
