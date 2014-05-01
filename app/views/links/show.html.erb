@@ -14,10 +14,11 @@
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <%=@link.user.username %>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
-<% if @link.comments_count == 1 %>
+<% if @link.comments.count == 1 %>
 1 comment
 <% else %>
  <%= @link.comments.count %> Comments
+ <% end %>
 <a <%= image_tag("thumb.jpg", size: "30") %>
 <br/>
 
