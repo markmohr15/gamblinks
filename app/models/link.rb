@@ -7,7 +7,7 @@ class Link < ActiveRecord::Base
   has_many :votes
   has_many :voters, through: :votes   #users
 
-  def has_voted?(user)
+def has_voted?(user)
     votes.where(user_id: user.id).any?
   end
 
