@@ -22,7 +22,12 @@
 <br/>
 <a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <%=link.user.username %>
 <%= time_ago_in_words(link.created_at) %> ago)
-with <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
+with
+<% if link.comments.count == 1 %>
+1 Comment
+<% else %>
+ <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
+ <% end %>
 <br/>
 <br/>
 <% end %>
