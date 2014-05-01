@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :bio, :email, :password, :password_confirmation) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :bio, :email, :password, :password_confirmation, :current_password, :location) }
   end
+
+  def has_voted?(user)
+    votes.where(user_id: user.id).any?
+  end
+
 end
