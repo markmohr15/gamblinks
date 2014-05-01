@@ -1,3 +1,15 @@
+<br/>
+<% if current_user %>
+  <% if @link.has_voted?(current_user) %>
+  <% else %>
+      <% if @link.user == current_user %>
+      <% else %>
+  <%= form_for [@link, Vote.new] do |f| %>
+  <%= f.submit "Vote" %>
+  <% end %>
+  <% end %>
+<% end %>
+<% end %>
 <%= @link.votes_count %> Likes
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <%=@link.user.username %>
 <%= time_ago_in_words(@link.created_at) %> ago)
@@ -21,20 +33,11 @@ with <a href="/links/<%=@link.id%>"> <%= @link.comments.count %> Comments </a>
   <br/>
   <% end %>
 
-
+<br/>
 <% if current_user %>
 <%= form_for [@link, Comment.new] do |f| %>
-<%= f.text_field :body, :required => true %>
+<%= f.text_area :body, :required => true %>
 <br/>
-
 <%= f.submit "Comment"%>
-<% end %>
-<% end %>
-<% if event.has_voted?(@current_user) %>
-<% else %>
-<% if current_user %>
-<%= form_for [@link, Vote.new] do |f| %>
-<%= f.submit "Vote" %>
-<% end %>
 <% end %>
 <% end %>
