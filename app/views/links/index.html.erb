@@ -24,7 +24,7 @@
 <%= time_ago_in_words(link.created_at) %> ago)
 with
 <% if link.comments.count == 1 %>
-1 Comment
+<a href="/links/<%=link.id%>"> 1 Comment </a>
 <% else %>
  <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
  <% end %>

@@ -13,7 +13,11 @@
 <%= @link.votes_count %> Likes
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <%=@link.user.username %>
 <%= time_ago_in_words(@link.created_at) %> ago)
-with <a href="/links/<%=@link.id%>"> <%= @link.comments.count %> Comments </a>
+with
+<% if @link.comments_count == 1 %>
+1 comment
+<% else %>
+ <%= @link.comments.count %> Comments
 <a <%= image_tag("thumb.jpg", size: "30") %>
 <br/>
 
