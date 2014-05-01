@@ -10,12 +10,5 @@ class VotesController < ApplicationController
       redirect_to :back
     end
   end
-
-private
-
- # def vote_params
-  #  params.require(:link).permit(:title, :address)
-  #end
-
 end
 

@@ -31,10 +31,12 @@ with
   (by <%= comment.user.username %>
   <% end %>
     <%= time_ago_in_words(comment.created_at) %> ago)
+<% if current_user %>
 <% if comment.user_id != current_user.id %>
 <% else %>
 <%= link_to "Delete", link_comment_path(comment.link, comment), :method => :delete %>
   <% end %>
+<% end %>
   <br/>
   <% end %>
 

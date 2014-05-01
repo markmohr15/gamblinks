@@ -1,0 +1,18 @@
+<h3> Profile </h3>
+
+
+<%= @user.username %>
+<br/>
+<%= image_tag gravatar_url(@user) %>
+<br/>
+Bio: <%= @user.bio %>
+<br/>
+Location: <%= @user.location %>
+<br/>
+Links Submitted: <%= @user.links.count %>
+<br/>
+Comments: <%= @user.comments.count %>
+<br/>
+Followers:
+<br/>
+Following:
