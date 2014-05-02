@@ -4,10 +4,14 @@ class VotesController < ApplicationController
     @vote = Vote.new
     @vote.user_id = current_user.id
     @vote.link_id = @link.id
-    if @vote.save
-      redirect_to :back
+    if @link.votable_by?(current_user)
+      if @vote.save
+       redirect_to :back
+      else
+        redirect_to :back
+      end
     else
-      redirect_to :back
+      flash[:alert] = "Can't vote for yourself, sorry 'bout it."
     end
   end
 end
