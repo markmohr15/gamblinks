@@ -5,7 +5,7 @@ class Link < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   has_many :votes
-  has_many :voters, through: :votes   #users
+  has_many :voters, through: :votes, :source => :user  #users
 
   def votable_by?(user)
     return false if user.nil?
