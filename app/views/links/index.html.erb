@@ -13,7 +13,7 @@
 <% end %>
 </div>
 <br/>
-<a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <%=link.user.username %>
+<a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <a href="/users/<%=link.user.username%>"> <%=link.user.username %> </a>
 <%= time_ago_in_words(link.created_at) %> ago)
 with
 <% if link.comments.count == 1 %>
