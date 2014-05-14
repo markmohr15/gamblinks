@@ -1,18 +1,11 @@
-
-
 <% @links.each do |link| %>
-<% if current_user %>
-  <% if link.has_voted?(current_user) %>
-  <% else %>
-      <% if link.user == current_user %>
-      <% else %>
-  <%= form_for [link, Vote.new] do |f| %>
-  <%= f.submit "Vote" %>
+  <% if link.votable_by?(current_user) %>
+    <%= form_for [link, Vote.new] do |f| %>
+      <%= f.submit "Vote" %>
+    <% end %>
   <% end %>
-  <% end %>
-<% end %>
-<% end %>
-    <div style="float: left; width: auto;">
+
+<div style="float: left; width: auto;">
 <% if link.votes_count == 1 %>
 1 Like
 <% else %>
