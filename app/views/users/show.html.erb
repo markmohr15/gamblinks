@@ -36,7 +36,7 @@ Following: <%= @user.followed_users.count  %>
   <% else %>
     <%= link.votes_count %> Likes
   <% end %>
-  <a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <a href="/users/<%=link.user.username%>"> <%=link.user.username %> </a>
+  <a href="http://<%=link.address%>"> <%= link.title %> </a>
   <%= time_ago_in_words(link.created_at) %> ago)
   with
   <% if link.comments.count == 1 %>
