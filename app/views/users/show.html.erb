@@ -29,7 +29,7 @@ Following: <%= @user.followed_users.count  %>
 <% end %>
 <br>
 
-Top 5 Links Submitted: <br>
+<strong> Top 5 Links Submitted: </strong><br>
 <% Link.top_links(@user).all(:order => 'votes_count DESC').map do |link| %>
   <% if link.votes_count == 1 %>
     1 Like
@@ -48,9 +48,13 @@ Top 5 Links Submitted: <br>
 <br>
 <br>
 
-Top 5 Comments: <Br>
+<strong> Top 5 Comments: </strong> <br>
 <% Comment.top_comments(@user).all(:order => 'comment_votes_count DESC').map do |comment| %>
-  <%= comment.comment_votes_count %> &nbsp
+  <% if comment.comment_votes_count == 1 %>
+    1 Like &nbsp
+  <% else %>
+    <%= comment.comment_votes_count %> Likes &nbsp
+  <% end %>
   <a href="/links/<%=comment.link_id%>"> <%= comment.body %> </a>
   <%= time_ago_in_words(comment.created_at) %> ago
   <br>
