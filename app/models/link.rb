@@ -13,6 +13,11 @@ class Link < ActiveRecord::Base
     return false if voters.include?(user)
     true
   end
+
+  def self.top_links(user)
+    where(user_id: user.id).order("votes_count desc").limit(5)
+  end
+
 end
 
 

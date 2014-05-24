@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
   def follow_relationship_for(user)
     relationships.find_by(followed_id: user.id)
   end
+
+
+
+
+
 end
 
 

@@ -1,6 +1,5 @@
 <h3> Profile </h3>
 
-
 <%= @user.username %>
 <br/>
 <%= image_tag gravatar_url(@user) %>
@@ -26,9 +25,36 @@ Following: <%= @user.followed_users.count  %>
     <%= form_for [@user, current_user.follow_relationship_for(@user)], html: {method: :delete} do |f| %>
     <%= f.submit "Unfollow" %>
     <% end %>
-
-
   <% end %>
 <% end %>
+<br>
+
+Top 5 Links Submitted: <br>
+<% Link.top_links(@user).all(:order => 'votes_count DESC').map do |link| %>
+  <% if link.votes_count == 1 %>
+    1 Like
+  <% else %>
+    <%= link.votes_count %> Likes
+  <% end %>
+  <a href="http://<%=link.address%>"> <%= link.title %> </a> (submitted by <a href="/users/<%=link.user.username%>"> <%=link.user.username %> </a>
+  <%= time_ago_in_words(link.created_at) %> ago)
+  with
+  <% if link.comments.count == 1 %>
+    <a href="/links/<%=link.id%>"> 1 Comment </a>
+  <% else %>
+    <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
+  <% end %> <br>
+<% end %>
+<br>
+<br>
+
+Top 5 Comments: <Br>
+<% Comment.top_comments(@user).all(:order => 'comment_votes_count DESC').map do |comment| %>
+  <%= comment.comment_votes_count %> &nbsp
+  <a href="/links/<%=comment.link_id%>"> <%= comment.body %> </a>
+  <%= time_ago_in_words(comment.created_at) %> ago
+  <br>
+<% end %>
+
 
 

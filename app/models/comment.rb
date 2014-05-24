@@ -13,4 +13,9 @@ class Comment < ActiveRecord::Base
     return false if comment_voters.include?(user)
     true
   end
+
+  def self.top_comments(user)
+    where(user_id: user.id).order("comment_votes_count desc").limit(5)
+  end
+
 end

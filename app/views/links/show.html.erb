@@ -6,7 +6,8 @@
   <% end %>
 <% end %>
 
-<%= @link.votes_count %> Likes
+<strong>
+<%= @link.votes_count %> Likes &nbsp
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
@@ -15,7 +16,7 @@ with
 <% else %>
  <%= @link.comments.count %> Comments
  <% end %>
-<a <%= image_tag("thumb.jpg", size: "30") %>
+</strong>
 <br/>
 
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
@@ -25,12 +26,12 @@ with
     <%= f.submit "Vote" %>
   <% end %>
 <% end %>
-<%= comment.comment_votes_count %> Likes &nbsp
+&nbsp <%= comment.comment_votes_count %> Likes &nbsp
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous
   <% else %>
-  (by <%= comment.user.username %>
+  (by <a href="/users/<%=comment.user.id%>"> <%= comment.user.username %> </a>
   <% end %>
     <%= time_ago_in_words(comment.created_at) %> ago)
 <% if current_user %>
@@ -50,3 +51,4 @@ with
 <%= f.submit "Comment"%>
 <% end %>
 <% end %>
+
