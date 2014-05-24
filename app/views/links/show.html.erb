@@ -18,14 +18,14 @@ with
 <a <%= image_tag("thumb.jpg", size: "30") %>
 <br/>
 
-<% @link.comments.each do |comment| %>
+<% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
 <br/>
 <% if comment.can_vote?(current_user) %>
   <%= form_for [@link, comment, CommentVote.new] do |f| %>
     <%= f.submit "Vote" %>
   <% end %>
 <% end %>
- Likes
+<%= comment.comment_votes_count %> Likes &nbsp
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous
