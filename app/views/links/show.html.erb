@@ -20,6 +20,12 @@ with
 
 <% @link.comments.each do |comment| %>
 <br/>
+<% if comment.can_vote?(current_user) %>
+  <%= form_for [@link, comment, CommentVote.new] do |f| %>
+    <%= f.submit "Vote" %>
+  <% end %>
+<% end %>
+ Likes
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous

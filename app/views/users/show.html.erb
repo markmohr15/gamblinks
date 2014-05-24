@@ -13,6 +13,22 @@ Links Submitted: <%= @user.links.count %>
 <br/>
 Comments: <%= @user.comments.count %>
 <br/>
-Followers:
+Followers: <%= @user.followers.count  %>
 <br/>
-Following:
+Following: <%= @user.followed_users.count  %>
+<br/>
+<% unless @user == current_user || current_user.nil? %>
+  <% if @user.followed?(current_user) %>
+    <%= form_for [@user, Relationship.new] do |f| %>
+      <%= f.submit "Follow" %>
+    <% end %>
+  <% else %>
+    <%= form_for [@user, current_user.follow_relationship_for(@user)], html: {method: :delete} do |f| %>
+    <%= f.submit "Unfollow" %>
+    <% end %>
+
+
+  <% end %>
+<% end %>
+
+

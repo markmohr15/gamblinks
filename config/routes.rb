@@ -3,10 +3,14 @@ CoolLinks::Application.routes.draw do
   root to: "links#index"
 
   resources :links do
-    resources :comments
     resources :votes
+    resources :comments do
+      resources :comment_votes, only: [:create]
+    end
   end
-  resources :users
+ resources :users do
+  resources :relationships, only: [:create, :destroy]
+ end
 
 end
 
