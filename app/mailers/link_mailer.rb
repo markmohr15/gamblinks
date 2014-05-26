@@ -1,5 +1,5 @@
 class LinkMailer < ActionMailer::Base
-  default from: "mail@cool_links.com"
+  default from: "mail@omahasweethearts.com"
 
   def link_notification(link)
     @link = link
