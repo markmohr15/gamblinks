@@ -6,7 +6,7 @@ class LinkMailer < ActionMailer::Base
     @user = @link.user
     emails = @user.followers.where(email_notification: "Yes").map { |follower| follower.email }
     if emails.count > 0
-      mail(to: emails, subject: 'Someone you follow submitted a new link!')
+      mail(bcc: emails, subject: 'Someone you follow submitted a new link!')
     end
   end
 end
