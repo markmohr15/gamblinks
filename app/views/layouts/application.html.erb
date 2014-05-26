@@ -12,7 +12,7 @@
 <% if current_user %>
 Hi, <%= current_user.username %>
 <%= link_to "Home", "/links" %>
-<%= link_to "Submit a Link", new_link_path %>
+<%= link_to_modal "Submit a Link", "#submit-link" %>
 <%= link_to "Edit Profile", edit_user_registration_path %>
 <%= link_to "Sign Out", destroy_user_session_path %>
 <% else %>
@@ -23,9 +23,25 @@ Hi, <%= current_user.username %>
 <br/>
 <h1> Gambling Links </h1>
 </nav>
+
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
+
+<div id="submit-link" style="display: none; ">
+  <p>
+    <%= form_for @link, url: links_path do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true  %>
+    <br/>
+    <%= f.label :address %>
+    <%= f.text_field :address, :required => true  %>
+    <br/>
+    <%= f.submit %>
+    <% end %>
+  </p>
+</div>
 
 </body>
 </html>

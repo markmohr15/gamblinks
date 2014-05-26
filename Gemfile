@@ -40,6 +40,11 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
+
+  gem 'jquery-ui-rails'
+  gem 'jquery-modal-rails'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
