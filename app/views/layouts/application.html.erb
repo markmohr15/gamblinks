@@ -33,12 +33,12 @@ Hi, <%= current_user.username %>
   <p>
     <%= form_for @link, :method => :new, url: links_path do |f| %>
     <%= f.label :title %>
-    <%= f.text_field :title, :required => true  %>
+    <%= f.text_field :title, :required => true, value: ''  %>
     <br/>
     <%= f.label :address %>
-    <%= f.text_field :address, :required => true  %>
+    <%= f.text_field :address, :required => true, value: ''  %>
     <br/>
-    <%= f.submit %>
+    <%= f.submit "Add a Link" %>
     <% end %>
   </p>
 </div>
