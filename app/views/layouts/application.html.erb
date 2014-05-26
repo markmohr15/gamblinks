@@ -31,7 +31,7 @@ Hi, <%= current_user.username %>
 
 <div id="submit-link" style="display: none; ">
   <p>
-    <%= form_for @link, url: links_path do |f| %>
+    <%= form_for @link, :method => :new, url: links_path do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title, :required => true  %>
     <br/>

@@ -7,7 +7,11 @@
 <% end %>
 
 <strong>
-<%= @link.votes_count %> Likes &nbsp
+<%= if @link.votes_count == 1 %>
+  1 Like &nbsp
+<% else %>
+  <%= @link.votes_count %> Likes &nbsp
+<% end %>
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
