@@ -26,8 +26,8 @@
   <%= f.text_area :bio %></div>
   <div><%= f.label :location %><br/>
   <%= f.text_field :location %></div>
-  <%= f.label :email_notification %> <br/>
-  <%= f.select :email_notification, ['Yes', 'No'] %><br/><br/>
+ <div> <%= f.label :email_notification %> <br/>
+  <%= f.select :email_notification, ['Yes', 'No'] %></div>
   <div><%= f.submit "Update" %></div>
 <% end %>
 

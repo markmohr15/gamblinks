@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :bio, :email, :password, :password_confirmation) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :bio, :email, :password, :password_confirmation, :current_password, :location) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :bio, :email, :password, :password_confirmation, :current_password, :location, :email_notification) }
   end
 
   def modal_form
