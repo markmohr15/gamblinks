@@ -16,6 +16,7 @@ class LinksController < ApplicationController
     @link.user_id = current_user.id
 
     if @link.save
+      LinkMailer.link_notification(@link).deliver
       redirect_to link_url(@link)
     else
       render action: :new
