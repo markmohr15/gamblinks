@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   #validates :address, uniqueness: true
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :voters, through: :votes, :source => :user  #users
   after_commit :send_email, :on => :create
 

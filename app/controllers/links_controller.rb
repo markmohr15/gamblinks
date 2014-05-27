@@ -11,8 +11,6 @@ class LinksController < ApplicationController
     @link = Link.new
   end
 
-#if @link.votable_by?(current_user)
-
   def create
     @link = Link.new(link_params)
     @link.user_id = current_user.id
@@ -34,7 +32,6 @@ class LinksController < ApplicationController
         flash[:notice] = "This link was submitted by someone else.  Your submission
         was treated as a vote."
       end
-
     else
       if @link.save
         LinkMailer.link_notification(@link).deliver
@@ -51,12 +48,6 @@ private
     params.require(:link).permit(:title, :address)
   end
 
-  def votable_by?(user)
-    return false if user.nil?
-    return false if user == self.user
-    return false if voters.include?(user)
-    true
-  end
 
 
 end
