@@ -16,12 +16,14 @@
 <span class="nav-links"><%= link_to "Home", "/links" %> |
 <%= link_to_modal "Submit a Link", "#submit-link" %> |
 <%= link_to "Edit Profile", edit_user_registration_path %> |
-<%= link_to "Sign Out", destroy_user_session_path %>
+<%= link_to "Sign Out", destroy_user_session_path %></span>
 <% else %>
+<span class="greeting">
 <%= link_to "Sign In", new_user_session_path %> |
 <%= link_to "Sign Up", new_user_registration_path %> |
-<%= link_to "Home", "/links" %> </span>
+<%= link_to "Home", "/links" %> </div>
 <% end %>
+
 </nav>
 </div>
 

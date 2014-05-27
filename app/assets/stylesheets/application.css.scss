@@ -87,9 +87,12 @@ span {
   padding-left: 10px;
   position: absolute;
   top: 170px;
+  a {
+    color: white;
+  }
 }
 
-.link {
+.link, .profile {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 200px;
@@ -134,8 +137,6 @@ span {
   padding-bottom: 10px;
   margin-left: 250px;
   margin-right: 250px;
-
-
 }
 
 .comment_form input[type="submit"]  {
@@ -147,6 +148,10 @@ textarea#comment_body {
   margin-top: 25px;
   height: 100px;
   width: 60%;
+}
+
+h2 {
+  text-align: center;
 }
 
 
