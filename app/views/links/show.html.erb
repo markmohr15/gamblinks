@@ -1,21 +1,21 @@
-<br/>
 <div class="link" data-id="<%= @link.id %>" id="link-<%= @link.id %>">
-<% if @link.votable_by?(current_user) %>
-  <%= form_for [@link, Vote.new], remote: true do |f| %>
-    <%= f.submit "Vote" %>
+<div class="vote">
+<%= form_for [@link, Vote.new], remote: true do |f| %>
+  <% if @link.votable_by?(current_user) %>
+      <%= f.submit "Vote" %>
+  <% else %>
+      <%= f.submit "Vote", :disabled => true %>
   <% end %>
 <% end %>
+  </div>
 
-
-<strong>
 <div class="count">
-<% if @link.votes_count == 1 %>
-  1 Like &nbsp
-<% else %>
-  <%= @link.votes_count %> Likes &nbsp
-<% end %>
+<%= @link.votes_count %>
 </div>
-<a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
+<%= image_tag "thumb.jpg", :class => "thumb", width: '25px', height: '25px' %>
+
+<div class="info">
+<div class="name"><a href="http://<%=@link.address%>"> <%= @link.title %> </a></div> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
 <% if @link.comments.count == 1 %>
@@ -23,28 +23,28 @@ with
 <% else %>
  <%= @link.comments.count %> Comments
  <% end %>
-</strong>
 </div>
 <br/>
+</div>
 
+<div class="comments">
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
 <div class="comment" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
 <br/>
-<% if comment.can_vote?(current_user) %>
 <div class="comment-vote">
-  <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
+<%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
+  <% if comment.can_vote?(current_user) %>
     <%= f.submit "Vote" %>
-</div>
+  <% else %>
+    <%= f.submit "Vote", :disabled => true %>
   <% end %>
 <% end %>
-&nbsp
-<div class="comment-votes-count">
-  <% if comment.comment_votes_count == 1 %>
-  1 Like
-  <% else %>
- <%= comment.comment_votes_count %> Likes &nbsp
- <% end %>
 </div>
+
+<div class="comment-votes-count">
+ <%= comment.comment_votes_count %>
+</div>
+<%= image_tag "thumb.jpg", :class => "thumb", width: '25px', height: '25px' %>
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous
@@ -58,18 +58,16 @@ with
 <%= link_to "Delete", link_comment_path(comment.link, comment), :method => :delete %>
   <% end %>
 <% end %>
-  <br/>
   </div>
   <% end %>
 
-<br/>
+<div class="comment_form">
 <% if current_user %>
-<%= form_for [@link, Comment.new] do |f| %>
-<%= f.text_area :body, :required => true %>
-<br/>
-<%= f.submit "Comment"%>
+  <%= form_for [@link, Comment.new] do |f| %>
+    <%= f.text_area :body, :required => true %>
+    <br/>
+    <%= f.submit "Comment"%>
+  <% end %>
 <% end %>
-<% end %>
-
-
-
+</div>
+</div>

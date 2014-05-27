@@ -1,7 +1,7 @@
 <% if @comment.comment_votes_count != 0 %>
-  var html = "<%= @comment.comment_votes_count + 1 %> Likes";
+  var html = "<%= @comment.comment_votes_count + 1 %>";
  <% else %>
-  var html = "1 Like";
+  var html = "1";
 <% end %>
 
 var container = $("#comment-<%= @comment_vote.comment.id %>");
