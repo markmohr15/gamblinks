@@ -5,7 +5,7 @@
     <%= f.submit "Vote" %>
   <% end %>
 <% end %>
-</div>
+
 
 <strong>
 <div class="count">
@@ -24,6 +24,7 @@ with
  <%= @link.comments.count %> Comments
  <% end %>
 </strong>
+</div>
 <br/>
 
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
