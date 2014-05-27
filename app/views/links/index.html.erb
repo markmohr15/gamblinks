@@ -1,11 +1,14 @@
 <% @links.each do |link| %>
+  <div class="link" data-id="<%= link.id %>" id="link-<%= link.id %>">
   <% if link.votable_by?(current_user) %>
-    <%= form_for [link, Vote.new] do |f| %>
+  <div class="vote">
+    <%= form_for [link, Vote.new], remote: true do |f| %>
       <%= f.submit "Vote" %>
+  </div>
     <% end %>
   <% end %>
 
-<div style="float: left; width: auto;">
+<div class="count" style="float: left; width: auto;">
 <% if link.votes_count == 1 %>
 1 Like
 <% else %>
@@ -23,6 +26,12 @@ with
  <% end %>
 <br/>
 <br/>
+</div>
 <% end %>
+
+
+
+
+
 
 

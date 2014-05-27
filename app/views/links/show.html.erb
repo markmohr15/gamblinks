@@ -1,17 +1,19 @@
 <br/>
-
+<div class="link" data-id="<%= @link.id %>" id="link-<%= @link.id %>">
 <% if @link.votable_by?(current_user) %>
-  <%= form_for [@link, Vote.new] do |f| %>
+  <%= form_for [@link, Vote.new], remote: true do |f| %>
     <%= f.submit "Vote" %>
   <% end %>
 <% end %>
 
 <strong>
+<div class="count">
 <% if @link.votes_count == 1 %>
   1 Like &nbsp
 <% else %>
   <%= @link.votes_count %> Likes &nbsp
 <% end %>
+</div>
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
@@ -26,7 +28,7 @@ with
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
 <br/>
 <% if comment.can_vote?(current_user) %>
-  <%= form_for [@link, comment, CommentVote.new] do |f| %>
+  <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
     <%= f.submit "Vote" %>
   <% end %>
 <% end %>
@@ -55,4 +57,6 @@ with
 <%= f.submit "Comment"%>
 <% end %>
 <% end %>
+
+</div>
 

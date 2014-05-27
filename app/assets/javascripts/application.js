@@ -16,3 +16,13 @@
 //= require jquery.ui.all
 //= require jquery.modal
 //= require_tree .
+
+$(document).ready(function(){
+$(".vote").on("click", function(event) {
+  var container = $(this).closest('.link');
+
+
+
+
+})
+})
