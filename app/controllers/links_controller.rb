@@ -36,6 +36,7 @@ class LinksController < ApplicationController
       if @link.save
         LinkMailer.link_notification(@link).deliver
         redirect_to link_url(@link)
+        flash[:notice] = "Thanks for submitting a link."
       else
         render action: :new
       end
