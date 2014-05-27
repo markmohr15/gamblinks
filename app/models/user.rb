@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   validates :username, uniqueness: true
+  validates :email, uniqueness: true
   has_many :links, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -11,8 +12,6 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-
-
   has_many :comment_votes, dependent: :destroy
   has_many :voted_on_comments, through: :comment_votes, dependent: :destroy
 

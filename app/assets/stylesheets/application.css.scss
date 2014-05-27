@@ -29,7 +29,7 @@ body {
 nav {
   padding-left: 15%;
   padding-right: 15%;
-  padding-bottom: 60px;
+  padding-bottom: 45px;
 }
 
 .container {
@@ -92,7 +92,7 @@ span {
   }
 }
 
-.link, .profile {
+.link, .form, .forgot {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 200px;
@@ -154,7 +154,7 @@ h2 {
   text-align: center;
 }
 
-.profile {
+.form {
 
   font-size: 18px;
 
@@ -168,6 +168,7 @@ h2 {
 
   input {
     width: 25%;
+    font-size: 16px;
   }
 
   input[type="submit"] {
@@ -177,6 +178,30 @@ h2 {
   textarea#user_bio {
     width: 300px;
     height: 120px;
+    font-size: 16px;
+  }
+
+  input#user_remember_me {
+    width: inherit;
+  }
+}
+
+.forgot {
+  div {
+    padding-bottom: 10px;
+  }
+
+  label {
+    margin-left: 5px;
+  }
+
+  input {
+    width: 30%;
+    font-size: 16px;
+  }
+
+  input[type="submit"] {
+    width: 220px;
   }
 }
 
