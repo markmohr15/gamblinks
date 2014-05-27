@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+ *= require_self
+ *= require jquery.ui.all
+ *= require jquery.modal
+ *= require_tree .
+ */
+
+html, ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.container {
+  height: 190px;
+  position: relative;
+}
+
+img {
+  display:block;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+}
+
+
+
+.nav-links a {
+  color: white;
+}
+
+
+
+#submit-link {
+  color: white;
+  background-color: #3B9E3B;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#link_title, #link_address {
+  display: block;
+  width: 380px;
+  text-align: right;
+}
+
+
+a {
+  color: #3B9E3B;
+}
+
+span {
+  color: white;
+  font-size: 18px;
+}
+
+.nav-links {
+
+  padding-right: 10px;
+  position: absolute;
+  left: 380px;
+  top: 170px;
+  a {
+    color: white;
+  }
+}
+
+.greeting {
+  padding-left: 10px;
+  position: absolute;
+  top: 170px;
+}
+
