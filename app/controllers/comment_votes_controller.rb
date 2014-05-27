@@ -11,7 +11,6 @@ class CommentVotesController < ApplicationController
         format.html { redirect_to :back }
         format.js
       end
-      flash[:notice] = "Thanks for your vote."
     else
       flash[:alert] = "Can't vote for yourself, sorry 'bout it."
     end
