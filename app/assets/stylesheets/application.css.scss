@@ -21,7 +21,7 @@ html, ul {
 }
 
 body {
-  background: white;
+  background: lightgray;
   padding: 0;
   margin: 0;
 }
@@ -104,7 +104,7 @@ span {
 }
 
 .link.even {
-  background: white;
+  background: #E6EBE6;
 }
 
 .vote, .count, .info, .comment-vote, .comment-votes-count
@@ -152,6 +152,32 @@ textarea#comment_body {
 
 h2 {
   text-align: center;
+}
+
+.profile {
+
+  font-size: 18px;
+
+  div {
+    padding-bottom: 10px;
+  }
+
+  label {
+    margin-left: 5px;
+  }
+
+  input {
+    width: 25%;
+  }
+
+  input[type="submit"] {
+    width: 60px;
+  }
+
+  textarea#user_bio {
+    width: 300px;
+    height: 120px;
+  }
 }
 
 
