@@ -1,7 +1,7 @@
 class Link < ActiveRecord::Base
   validates :title, presence: true
   validates :address, presence: true
-  validates :address, uniqueness: true
+  #validates :address, uniqueness: true
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :votes
@@ -19,9 +19,7 @@ class Link < ActiveRecord::Base
     where(user_id: user.id).order("votes_count desc").limit(5)
   end
 
-  def send_email
 
-  end
 
 end
 
