@@ -6,10 +6,10 @@ class CommentVotesController < ApplicationController
     @comment_vote.user_id = current_user.id
     @comment_vote.comment_id = @comment.id
     if @comment.can_vote?(current_user)
-      if @comment_vote.save
-       redirect_to :back
-      else
-        redirect_to :back
+      @comment_vote.save
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
       end
     else
       flash[:alert] = "Can't vote for yourself, sorry 'bout it."

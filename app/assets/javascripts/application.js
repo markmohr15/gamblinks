@@ -20,9 +20,10 @@
 $(document).ready(function(){
 $(".vote").on("click", function(event) {
   var container = $(this).closest('.link');
-
-
-
-
 })
+
+$(".comment-vote").on("click", function(event) {
+  var container = $(this).closest('.comment');
+})
+
 })

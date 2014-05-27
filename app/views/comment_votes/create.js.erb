@@ -1,0 +1,10 @@
+<% if @comment.comment_votes_count != 0 %>
+  var html = "<%= @comment.comment_votes_count + 1 %> Likes";
+ <% else %>
+  var html = "1 Like";
+<% end %>
+
+var container = $("#comment-<%= @comment_vote.comment.id %>");
+
+container.find(".comment-votes-count").text(html)
+container.find('input[type=submit]').attr('disabled', true)
