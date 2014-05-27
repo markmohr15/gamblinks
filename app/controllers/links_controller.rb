@@ -31,6 +31,8 @@ class LinksController < ApplicationController
       else
         @vote.save
         redirect_to :back
+        flash[:notice] = "This link was submitted by someone else.  Your submission
+        was treated as a vote."
       end
 
     else
