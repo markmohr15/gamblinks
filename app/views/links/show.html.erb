@@ -29,7 +29,7 @@ with
 
 <div class="comments">
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
-<div class="comment" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
+<div class="comment <%= cycle 'odd', 'even' %>" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
 <br/>
 <div class="comment-vote">
 <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
@@ -45,6 +45,7 @@ with
  <%= comment.comment_votes_count %>
 </div>
 <%= image_tag "thumb.jpg", :class => "thumb", width: '25px', height: '25px' %>
+  <div class="info">
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous
@@ -59,7 +60,9 @@ with
   <% end %>
 <% end %>
   </div>
+</div>
   <% end %>
+  </div>
 
 <div class="comment_form">
 <% if current_user %>
@@ -70,4 +73,4 @@ with
   <% end %>
 <% end %>
 </div>
-</div>
+
