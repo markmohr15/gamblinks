@@ -18,7 +18,7 @@
 </div>
 <%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
 <span class="name">
-<a href="http://<%=link.address%>"> <%= link.title %> </a></span>
+<a href="http://<%=link.address%>" target="_blank"> <%= link.title %> </a></span>
 <span class="info">
  (submitted by <a href="/users/<%=link.user.username%>"> <%=link.user.username %> </a>
 <%= time_ago_in_words(link.created_at) %> ago)
