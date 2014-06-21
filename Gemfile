@@ -41,9 +41,10 @@ group :development, :test do
 end
 
 
-  gem 'jquery-ui-rails'
-  gem 'jquery-modal-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
 
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
