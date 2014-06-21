@@ -18,6 +18,7 @@
 html, ul {
   margin: 0;
   padding: 0;
+  font-family: Times New Roman;
 }
 
 body {
@@ -26,9 +27,37 @@ body {
   margin: 0;
 }
 
+.notice {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border: 3px solid darkgreen;
+  border-radius: 10px;
+  float: none;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center
+}
+
+.alert {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: 3px solid darkred;
+  border-radius: 10px;
+  float: none;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center
+}
+
 nav {
-  padding-left: 15%;
-  padding-right: 15%;
+  max-width: 800px;
+  margin: 0 auto;
   padding-bottom: 45px;
 }
 
@@ -62,14 +91,13 @@ nav {
 #link_title, #link_address {
   display: block;
   width: 380px;
-  text-align: right;
 }
 
 a {
   color: #3B9E3B;
 }
 
-span {
+.greeting {
   color: white;
   font-size: 18px;
 }
@@ -92,11 +120,23 @@ span {
   }
 }
 
-.link, .form, .forgot {
+.forgot {
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 200px;
-  margin-right: 200px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.link {
+  vertical-align: middle;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thumb {
+  vertical-align: middle;
 }
 
 .link.odd, .comment.odd {
@@ -111,8 +151,12 @@ span {
  {
   display: inline-block;
   position: relative;
-  top: -5px;
   padding-left: 5px;
+  vertical-align: middle;
+}
+
+.vote {
+  top: -1px;
 }
 
 .count, .comment-votes-count {
@@ -121,39 +165,49 @@ span {
 
 .info, .comment {
   font-size: 14px;
+  word-wrap: break-word;
+  word-break: normal;
 }
 
 .name {
   font-size: 20px;
-  display: inline-block;
   position: relative;
   padding-left: 5px;
   padding-right: 5px;
   font-weight: bold;
+  vertical-align: middle;
 }
 
 .comments {
-  padding-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 
 }
 
 .comment {
-  padding-bottom: 10px;
-  margin-left: 250px;
-  margin-right: 250px;
+  vertical-align: middle;
   position: relative;
   padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 25px;
+}
+
+.comment_form {
+  text-align: center;
+  margin: auto;
 }
 
 .comment_form input[type="submit"]  {
-    margin-left: 270px;
+
   }
 
 textarea#comment_body {
-  margin-left: 250px;
-  margin-top: 45px;
-  height: 100px;
-  width: 500px;
+  margin: 0 auto;
+  width: 350px;
+  height: 70px;
 }
 
 h2 {
@@ -161,7 +215,9 @@ h2 {
 }
 
 .form {
-
+  text-align: center;
+  margin: auto;
+  width: 300px;
   font-size: 18px;
 
   div {
@@ -169,47 +225,127 @@ h2 {
   }
 
   label {
-    margin-left: 5px;
+    padding-left: 10px;
+    float: left;
   }
 
   input {
-    width: 250px;
-    font-size: 14px;
+    width: 300px;
+    font-size: 16px;
   }
 
   input[type="submit"] {
-    width: 60px;
+    font-family:Times New Roman;
+    font-size:15px;
+    font-weight:bold;
+    height:50px;
+    line-height:50px;
+    width:100px;
+    text-align:center;
+
   }
 
   textarea#user_bio {
     width: 300px;
     height: 120px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
-  input#user_remember_me {
-    width: inherit;
+  a {
+    float: left;
+    font-weight: bold;
+  }
+
+  select#user_email_notification {
+    float: left;
+  }
+
+  .current_password {
+    padding-top: 20px;
   }
 }
 
 .forgot {
+  text-align: center;
+  margin: auto;
+  width: 300px;
+  font-size: 18px;
+
   div {
     padding-bottom: 10px;
   }
 
   label {
-    margin-left: 5px;
+    padding-left: 10px;
+    float: left;
   }
 
   input {
-    width: 250px;
-    font-size: 14px;
+    width: 300px;
+    font-size: 16px;
   }
 
   input[type="submit"] {
     width: 220px;
 
   }
+}
+
+.profile {
+  font-size: 16px;
+  width: 300px;
+  float: left;
+  display: inline-block;
+  height: 100%;
+  margin-right: 50px;
+
+
+  .other {
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+  }
+
+  .username {
+  font-weight: bold;
+  font-size: 35px;
+
+
+}
+
+  .label {
+    padding-right: 4px;
+    font-weight: bold;
+    color: black;
+  }
+
+}
+
+.top5 {
+  float: left;
+  display: inline-block;
+  width: -moz-calc(100% - 300px);
+  width: -webkit-calc(100% - 300px);
+  width: calc(100% - 300px);
+  padding-top: 30px;
+  height: 100%;
+
+
+
+
+  .header {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
+}
+
+.wrap {
+  padding-top: 10px;
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 

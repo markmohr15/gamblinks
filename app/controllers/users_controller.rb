@@ -3,6 +3,4 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:id])
   end
 
-
-
 end

@@ -1,4 +1,5 @@
-<div class="link" data-id="<%= @link.id %>" id="link-<%= @link.id %>">
+<div class="wrap">
+<div class="link odd" data-id="<%= @link.id %>" id="link-<%= @link.id %>">
 <div class="vote">
 <%= form_for [@link, Vote.new], remote: true do |f| %>
   <% if @link.votable_by?(current_user) %>
@@ -12,10 +13,10 @@
 <div class="count">
 <%= @link.votes_count %>
 </div>
-<%= image_tag "thumb.jpg", :class => "thumb", width: '25px', height: '25px' %>
-
-<div class="info">
-<div class="name"><a href="http://<%=@link.address%>"> <%= @link.title %> </a></div> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
+<%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
+<span class="name">
+<a href="http://<%=@link.address%>"> <%= @link.title %> </a></span>
+<span class="info"> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
 <%= time_ago_in_words(@link.created_at) %> ago)
 with
 <% if @link.comments.count == 1 %>
@@ -23,14 +24,12 @@ with
 <% else %>
  <%= @link.comments.count %> Comments
  <% end %>
-</div>
-<br/>
+</span>
 </div>
 
 <div class="comments">
 <% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
-<div class="comment <%= cycle 'odd', 'even' %>" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
-<br/>
+<div class="comment <%= cycle 'even', 'odd' %>" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
 <div class="comment-vote">
 <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
   <% if comment.can_vote?(current_user) %>
@@ -44,8 +43,8 @@ with
 <div class="comment-votes-count">
  <%= comment.comment_votes_count %>
 </div>
-<%= image_tag "thumb.jpg", :class => "thumb", width: '25px', height: '25px' %>
-  <div class="info">
+<%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
+  <span class="info">
   <%= comment.body %>
  <% if comment.user_id == nil %>
   (by Anonymous
@@ -59,10 +58,11 @@ with
 <%= link_to "Delete", link_comment_path(comment.link, comment), :method => :delete %>
   <% end %>
 <% end %>
+  </span>
   </div>
-</div>
   <% end %>
-  </div>
+</div>
+
 
 <div class="comment_form">
 <% if current_user %>
@@ -73,4 +73,5 @@ with
   <% end %>
 <% end %>
 </div>
+
 

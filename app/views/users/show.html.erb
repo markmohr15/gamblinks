@@ -1,21 +1,15 @@
-<h3> Profile </h3>
+<div class="wrap">
 
-<%= @user.username %>
-<br/>
+<div class="profile">
+<div class="username"><%= @user.username %></div>
 <%= image_tag gravatar_url(@user) %>
-<br/>
-Bio: <%= @user.bio %>
-<br/>
-Location: <%= @user.location %>
-<br/>
-Links Submitted: <%= @user.links.count %>
-<br/>
-Comments: <%= @user.comments.count %>
-<br/>
-Followers: <%= @user.followers.count  %>
-<br/>
-Following: <%= @user.followed_users.count  %>
-<br/>
+<div class="other"><span class="label">Bio:</span> <%= @user.bio %></div>
+<div class="other"><span class="label">Location:</span> <%= @user.location %></div>
+<div class="other"><span class="label">Links Submitted:</span> <%= @user.links.count %></div>
+<div class="other"><span class="label">Comments:</span> <%= @user.comments.count %></div>
+<div class="other"><span class="label">Followers:</span> <%= @user.followers.count  %></div>
+<div class="other"><span class="label">Following:</span> <%= @user.followed_users.count  %></div>
+
 <% unless @user == current_user || current_user.nil? %>
   <% if @user.followed?(current_user) %>
     <%= form_for [@user, Relationship.new] do |f| %>
@@ -28,37 +22,45 @@ Following: <%= @user.followed_users.count  %>
   <% end %>
 <% end %>
 <br>
+</div>
 
-<strong> Top 5 Links Submitted: </strong><br>
+
+<div class="top5">
+<div class="header">Top 5 Links </div>
 <% Link.top_links(@user).all(:order => 'votes_count DESC').map do |link| %>
-  <% if link.votes_count == 1 %>
-    1 Like
-  <% else %>
-    <%= link.votes_count %> Likes
-  <% end %> &nbsp
-  <a href="http://<%=link.address%>"> <%= link.title %> </a>
-  <%= time_ago_in_words(link.created_at) %> ago)
+    <div class="count"> <%= link.votes_count %></div>
+  <%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
+ <div class="info">
+<div class="name">
+  <a href="http://<%=link.address%>"> <%= link.title %> </a></div>
+  (<%= time_ago_in_words(link.created_at) %> ago)
   with
   <% if link.comments.count == 1 %>
     <a href="/links/<%=link.id%>"> 1 Comment </a>
   <% else %>
     <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
-  <% end %> <br>
+  <% end %>
+  </div>
+   <br>
 <% end %>
 <br>
 <br>
 
-<strong> Top 5 Comments: </strong> <br>
+<div class="header">Top 5 Comments </div>
 <% Comment.top_comments(@user).all(:order => 'comment_votes_count DESC').map do |comment| %>
-  <% if comment.comment_votes_count == 1 %>
-    1 Like
-  <% else %>
-    <%= comment.comment_votes_count %> Likes
-  <% end %> &nbsp
-  <a href="/links/<%=comment.link_id%>"> <%= comment.body %> </a>
+    <div class="count"> <%= comment.comment_votes_count %> </div>
+    <%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
+<div class="info">
+<div class="name">
+  <a href="/links/<%=comment.link_id%>"> <%= comment.body %> </a></div>
   <%= time_ago_in_words(comment.created_at) %> ago
-  <br>
+</div>
+<br>
 <% end %>
+</div>
 
 
+
+
+</div>
 
