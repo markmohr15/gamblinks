@@ -26,4 +26,8 @@ $(".comment-vote").on("click", function(event) {
   var container = $(this).closest('.comment');
 })
 
+ if (window.innerWidth < 550) {
+  $(".greeting").hide()
+ }
+
 })
