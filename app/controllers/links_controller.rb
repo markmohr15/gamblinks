@@ -14,6 +14,8 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+    @link.address = @link.address.sub(/^https?\:\/\//, '').sub(/^www./,'')
+    @link.address.chop! if @link.address.end_with? '/'
     @link.user_id = current_user.id
     if Link.where(address: @link.address).any?
       @fetch_link_id = Link.where(address: @link.address).map { |link| link.id }
@@ -22,14 +24,14 @@ class LinksController < ApplicationController
       @vote.user_id = current_user.id
       @vote.link_id = @fetch_link_id[0]
       if @fetch_user_id[0] == current_user.id
-        redirect_to :back
+        redirect_to link_path(@vote.link_id)
         flash[:alert] = "You already submitted this link."
       elsif Vote.where(link_id: @fetch_link_id[0], user_id: current_user.id).any?
-        redirect_to :back
+        redirect_to link_path(@vote.link_id)
         flash[:alert] = "You already voted for this link."
       else
         @vote.save
-        redirect_to :back
+        redirect_to link_path(@vote.link_id)
         flash[:notice] = "This link was submitted by someone else.  Your submission
         was treated as a vote."
       end
