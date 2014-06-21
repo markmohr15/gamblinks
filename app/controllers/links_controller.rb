@@ -5,6 +5,7 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+    @comments = @link.comments.page(params[:page])
   end
 
   def new

@@ -356,6 +356,7 @@ h2, h4 {
 
 .wrap {
   padding-top: 10px;
+  padding-bottom: 20px;
   width: 100%;
   height: 100%;
   max-width: 900px;
@@ -371,6 +372,8 @@ h2, h4 {
 nav.pagination {
   padding-top: 5px;
   padding-left: 75px;
+  padding-bottom: 0;
+  font-weight: bold;
 }
 
 .body {

@@ -28,7 +28,7 @@ with
 </div>
 
 <div class="comments">
-<% @link.comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
+<% @comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
 <div class="comment <%= cycle 'even', 'odd' %>" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
 <div class="comment-vote">
 <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
@@ -61,8 +61,8 @@ with
   </span>
   </div>
   <% end %>
+<%= paginate @comments %>
 </div>
-
 
 <div class="comment_form">
 <% if current_user %>
