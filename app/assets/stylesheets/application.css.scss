@@ -111,16 +111,18 @@ a {
 .nav-links {
   position: absolute;
   right: 60px;
-  top: 170px;
+  top: 169px;
+  color: white;
+  font-size: 18px;
   a {
     color: white;
   }
 }
 
 .greeting {
-  padding-left: 60px;
   position: absolute;
-  top: 170px;
+  left: 60px;
+  top: 169px;
   a {
     color: white;
   }
