@@ -12,7 +12,7 @@
 <div class="container">
 <%= image_tag "title.png", :class => "logo", height: '100%', width: '100%' %>
 <% if current_user %>
-<span class="greeting">Hi, <%= current_user.username %> </span>
+<span class="greeting">Hi, <a href="/users/<%= current_user.username %>"> <%= current_user.username %> </a></span>
 <span class="nav-links"><%= link_to "Home", "/links" %> |
 <%= link_to_modal "Submit a Link", "#submit-link" %> |
 <%= link_to "Edit Profile", edit_user_registration_path %> |
