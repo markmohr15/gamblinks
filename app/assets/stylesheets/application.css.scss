@@ -138,21 +138,29 @@ a {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 25px;
-  padding-left: 25px;
+  padding-left: 5px;
   max-width: 750px;
   margin: 0 auto;
+}
 
+.top_link, .top_comment {
+  vertical-align: middle;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0 auto;
 }
 
 .thumb {
   vertical-align: middle;
 }
 
-.link.odd, .comment.odd {
+.link.odd, .comment.odd, .top_link.odd, .top_comment.odd {
   background: white;
 }
 
-.link.even, .comment.even {
+.link.even, .comment.even, .top_link.even, .top_comment.even {
   background: #E6EBE6;
 }
 
@@ -303,13 +311,13 @@ h2, h4 {
   }
 }
 
+
 .profile {
   font-size: 16px;
   width: 300px;
-  float: left;
   display: inline-block;
-  height: 100%;
-  margin-right: 50px;
+  margin-right: 25px;
+  margin-left: 37.5px;
 
 
   .other {
@@ -321,8 +329,6 @@ h2, h4 {
   .username {
   font-weight: bold;
   font-size: 35px;
-
-
 }
 
   .label {
@@ -334,18 +340,17 @@ h2, h4 {
 }
 
 .top5 {
-  float: left;
   display: inline-block;
-  width: -moz-calc(100% - 300px);
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
-  padding-top: 30px;
-  height: 100%;
+  vertical-align: top;
+  width: 500px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   .header {
     font-weight: bold;
     font-size: 20px;
     padding-bottom: 5px;
+    padding-top: 20px;
   }
 }
 
@@ -357,9 +362,19 @@ h2, h4 {
   margin: 0 auto;
 }
 
+.profile_wrap {
+  padding-top: 10px;
+  margin: 0 auto;
+  width: 900px;
+}
+
 nav.pagination {
   padding-top: 5px;
   padding-left: 75px;
+}
+
+.body {
+  font-size: 20px;
 }
 
 

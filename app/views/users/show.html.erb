@@ -1,4 +1,4 @@
-<div class="wrap">
+<div class="profile_wrap">
 
 <div class="profile">
 <div class="username"><%= @user.username %></div>
@@ -21,18 +21,19 @@
     <% end %>
   <% end %>
 <% end %>
-<br>
 </div>
 
 
 <div class="top5">
 <div class="header">Top 5 Links </div>
+
 <% Link.top_links(@user).all(:order => 'votes_count DESC').map do |link| %>
+<div class="top_link <%= cycle 'odd', 'even' %>">
     <div class="count"> <%= link.votes_count %></div>
   <%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
- <div class="info">
-<div class="name">
-  <a href="http://<%=link.address%>"> <%= link.title %> </a></div>
+<span class="name">
+  <a href="http://<%=link.address%>"> <%= link.title %> </a></span>
+  <span class="info">
   (<%= time_ago_in_words(link.created_at) %> ago)
   with
   <% if link.comments.count == 1 %>
@@ -40,26 +41,25 @@
   <% else %>
     <a href="/links/<%=link.id%>"> <%= link.comments.count %> Comments </a>
   <% end %>
+  </span>
   </div>
-   <br>
 <% end %>
-<br>
-<br>
+
 
 <div class="header">Top 5 Comments </div>
 <% Comment.top_comments(@user).all(:order => 'comment_votes_count DESC').map do |comment| %>
+<div class="top_comment <%= cycle 'odd', 'even' %>">
     <div class="count"> <%= comment.comment_votes_count %> </div>
     <%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
-<div class="info">
-<div class="name">
-  <a href="/links/<%=comment.link_id%>"> <%= comment.body %> </a></div>
-  <%= time_ago_in_words(comment.created_at) %> ago
+<span class="info">
+<span class="body">
+  <%= comment.body %>
+</span>
+  (on link <a href="/links/<%=comment.link_id%>"> <%= comment.link.title %></a>
+  <%= time_ago_in_words(comment.created_at) %> ago)
+</span>
 </div>
-<br>
 <% end %>
-</div>
-
-
 
 
 </div>
