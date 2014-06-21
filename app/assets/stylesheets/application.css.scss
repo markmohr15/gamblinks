@@ -137,8 +137,11 @@ a {
   vertical-align: middle;
   padding-top: 5px;
   padding-bottom: 5px;
-  max-width: 800px;
+  padding-right: 25px;
+  padding-left: 25px;
+  max-width: 750px;
   margin: 0 auto;
+
 }
 
 .thumb {
@@ -153,7 +156,7 @@ a {
   background: #E6EBE6;
 }
 
-.vote, .count, .info, .comment-vote, .comment-votes-count
+.vote, .count, .comment-vote, .comment-votes-count
  {
   display: inline-block;
   position: relative;
@@ -173,6 +176,12 @@ a {
   font-size: 14px;
   word-wrap: break-word;
   word-break: normal;
+}
+
+.info {
+  position: relative;
+  padding-left: 5px;
+  vertical-align: middle;
 }
 
 .name {
@@ -333,9 +342,6 @@ h2, h4 {
   padding-top: 30px;
   height: 100%;
 
-
-
-
   .header {
     font-weight: bold;
     font-size: 20px;
@@ -349,6 +355,11 @@ h2, h4 {
   height: 100%;
   max-width: 900px;
   margin: 0 auto;
+}
+
+nav.pagination {
+  padding-top: 5px;
+  padding-left: 75px;
 }
 
 

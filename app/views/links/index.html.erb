@@ -1,3 +1,4 @@
+<div class="wrap">
 <% @links.each do |link| %>
   <div class="link <%= cycle 'odd', 'even' %>" data-id="<%= link.id %>" id="link-<%= link.id %>">
   <div class="vote">
@@ -33,3 +34,4 @@ with
 
 <%= paginate @links %>
 
+</div>
