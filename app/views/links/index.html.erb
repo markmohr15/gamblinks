@@ -1,22 +1,22 @@
 <div class="wrap">
 <% @links.each do |link| %>
+
+
   <div class="link <%= cycle 'odd', 'even' %>" data-id="<%= link.id %>" id="link-<%= link.id %>">
+  <div class="count">
+  <%= link.votes_count %>
+  </div>
+
   <div class="vote">
   <% if link.votable_by?(current_user) %>
     <%= form_for [link, Vote.new], remote: true do |f| %>
-      <%= f.submit "Vote" %>
+      <%= image_submit_tag("greenthumb.png", :id => "green", :class => "thumb", width: '25px', height: '25px') %>
     <% end %>
   <% else %>
-    <%= form_for [link, Vote.new], remote: true do |f| %>
-      <%= f.submit "Vote", :disabled => true %>
-    <% end %>
+      <%= image_tag("thumb.png", :class => "thumb", width: '23px', height: '23px') %>
   <% end %>
   </div>
 
-<div class="count">
-<%= link.votes_count %>
-</div>
-<%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
 <span class="name">
 <a href="http://<%=link.address%>" target="_blank"> <%= link.title %> </a></span>
 <span class="info">
