@@ -8,7 +8,7 @@ CoolLinks::Application.routes.draw do
       resources :comment_votes, only: [:create]
     end
   end
- resources :users do
+ resources :users, :id => /.*/ do
   resources :relationships, only: [:create, :destroy]
  end
 
