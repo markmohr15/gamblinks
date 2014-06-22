@@ -1,11 +1,7 @@
-<% if @link.votes_count != 0 %>
-  var html = "<%= @link.votes_count + 1 %>";
- <% else %>
-  var html = "1";
-<% end %>
+var html = "<%= @link.votes_count + 1 %>";
 
 var container = $("#link-<%= @vote.link.id %>");
 
 container.find('.count').text(html)
 container.find('.thumb').attr('disabled', true)
-container.find('.thumb').attr('src', 'assets/thumb.png').attr('width', '23px').attr('height', '23px')
+container.find('.thumb').attr('src', '/assets/thumb.png').attr('width', '23px').attr('height', '23px')
