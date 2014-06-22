@@ -12,5 +12,8 @@ CoolLinks::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
  end
 
+
+get "/about", to: "links#about"
+
 end
 
