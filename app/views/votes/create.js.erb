@@ -6,6 +6,6 @@
 
 var container = $("#link-<%= @vote.link.id %>");
 
-container.find(".count").text(html)
+container.find('.count').text(html)
 container.find('.thumb').attr('disabled', true)
-container.find('.thumb').attr('src', 'assets/thumb.png')
+container.find('.thumb').attr('src', 'assets/thumb.png').attr('width', '23px').attr('height', '23px')

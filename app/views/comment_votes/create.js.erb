@@ -7,4 +7,5 @@
 var container = $("#comment-<%= @comment_vote.comment.id %>");
 
 container.find(".comment-votes-count").text(html)
-container.find('input[type=submit]').attr('disabled', true)
+container.find('.thumb').attr('disabled', true)
+container.find('.thumb').attr('src', 'assets/thumb.png')

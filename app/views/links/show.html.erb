@@ -1,19 +1,18 @@
 <div class="wrap">
 <div class="link odd" data-id="<%= @link.id %>" id="link-<%= @link.id %>">
+<div class="count">
+  <%= @link.votes_count %>
+</div>
 <div class="vote">
-<%= form_for [@link, Vote.new], remote: true do |f| %>
   <% if @link.votable_by?(current_user) %>
-      <%= f.submit "Vote" %>
+    <%= form_for [@link, Vote.new], remote: true do |f| %>
+      <%= image_submit_tag("greenthumb.png", :id => "green", :class => "thumb", width: '25px', height: '25px') %>
+    <% end %>
   <% else %>
-      <%= f.submit "Vote", :disabled => true %>
+       <%= image_tag("thumb.png", :class => "thumb", width: '23px', height: '23px') %>
   <% end %>
-<% end %>
   </div>
 
-<div class="count">
-<%= @link.votes_count %>
-</div>
-<%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
 <span class="name">
 <a href="http://<%=@link.address%>"> <%= @link.title %> </a></span>
 <span class="info"> (submitted by <a href="/users/<%=@link.user.username%>"> <%=@link.user.username %> </a>
@@ -30,20 +29,19 @@ with
 <div class="comments">
 <% @comments.all(:order => 'comment_votes_count DESC').each do |comment| %>
 <div class="comment <%= cycle 'even', 'odd' %>" data-id="<%= comment.id %>" id="comment-<%= comment.id %>">
+<div class="comment-votes-count">
+  <%= comment.comment_votes_count %>
+</div>
 <div class="comment-vote">
-<%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
-  <% if comment.can_vote?(current_user) %>
-    <%= f.submit "Vote" %>
-  <% else %>
-    <%= f.submit "Vote", :disabled => true %>
+<% if comment.can_vote?(current_user) %>
+  <%= form_for [@link, comment, CommentVote.new], remote: true do |f| %>
+    <%= image_submit_tag("greenthumb.png", :id => "green", :class => "thumb", width: '25px', height: '25px') %>
   <% end %>
+<% else %>
+  <%= image_tag("thumb.png", :class => "thumb", width: '23px', height: '23px') %>
 <% end %>
 </div>
 
-<div class="comment-votes-count">
- <%= comment.comment_votes_count %>
-</div>
-<%= image_tag "thumb.svg", :class => "thumb", width: '25px', height: '25px' %>
   <span class="info">
   <%= comment.body %>
  <% if comment.user_id == nil %>
